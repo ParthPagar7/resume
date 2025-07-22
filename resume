@@ -1,0 +1,276 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% John Doe's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Parth Pagar}{
+    % Web Version
+    %\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+    %\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+    %%
+    \href{tel:+918010928231}{
+      \raisebox{-0.05\height} \faPhone\ +918010928231} ~ | ~
+    \href{mailto:parthpagar18@gmail.com}{
+      \raisebox{-0.15\height} \faEnvelope\ parthpagar18@gmail.com} ~ | ~
+    \href{https://www.linkedin.com/in/parth-pagar/}{
+      \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/parth-pagar} ~ | ~
+    \href{https://github.com/ParthPagar7}{
+      \raisebox{-0.15\height} \faGithub\ github.com/ParthPagar7}
+  }
+
+  %---------%
+  % Summary %
+  %---------%
+
+  \tinysection{Summary}
+Motivated and detail-oriented Fourth-Year Engineering Student with a strong analytical mindset and a passion for problem solving, innovation, and technology development. Skilled in applying engineering principles to real-world challenges and developing efficient solutions. Interested in working in dynamic, collaborative environments to drive impactful advancements. Interested in leveraging technical expertise and adaptability to contribute to cutting-edge projects and industry innovations
+  %--------%
+  % Skills %
+  %--------%
+\vspace{15pt}
+  \section{Skills}
+
+  \begin{multicols}{2}
+    \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+      \item[\textbf{Languages}] SQL, Python, C++, JAVA, JavaScript
+      \vspace{5pt}
+      \item[\textbf{Cloud}] Google Cloud, AWS
+      \vspace{5pt}
+      \item[\textbf{OS}] Windows, Ubuntu
+    \end{itemize}
+  \end{multicols}
+
+  %------------%
+  % Experience %
+  %------------%
+\vspace{10pt}
+  \section{Experience}
+
+  \headingBf{Softcrowd Technologies}{Jan 2024 -- Mar 2024}
+  \headingIt{Frontend Intern }{}
+  \begin{resume_list}
+  \vspace{5pt}
+    \item Developed and styled responsive web pages using HTML5, CSS, JavaScript, and Bootstrap
+    \vspace{2pt}
+    \item Improved website structure and layout to enhance user experience (UX) and responsiveness
+    \vspace{2pt}
+    \item Collaborated with the development team to implement interactive UI components
+    \vspace{2pt}
+    \item Gained hands-on experience in web development best practices and cross-browser compatibility
+    
+  \end{resume_list}
+
+  %-----------%
+  % Education %
+  %-----------%
+  \vspace{10pt}
+  \section{Education}
+
+  \item \headingIt{Aggregate CGPA : 7.0}{}
+  \item \headingIt{GES.R.H.Sapat College Of Engineering,Nashik-422005}{}
+  \vspace{8pt}
+  \headingBf{HSC -}{2021} 
+  \item\headingIt{87\%}{}
+  \item\headingIt{Adarsh Madhyamik Vidyalaya Samundi}{}
+  \vspace{8pt}
+  \headingBf{SSC -}{2019} 
+  \item\headingIt{83.40\%}{}
+  \item\headingIt{Kilbil English Medium School-423301}{}
+  \vspace{8pt}
+  
+  \end{resume_list}
+
+  %----------------------------%
+  % Extracurricular Activities %
+  %----------------------------%
+  \vspace{10pt}
+  \section{Projects}
+  \vspace{3pt}
+  \headingBf{Sign Language Recognition System}{Dec 2024 -- Ongoing}
+  \begin{resume_list}
+    \item Developing a CNN and LSTM-based model for real-time recognition of Indian Sign Language (ISL) gestures.
+    \item Building a responsive web interface using React, HTML, CSS, and JavaScript for seamless user interaction.
+    \item Training and optimizing the model using TensorFlow and OpenCV on Google Colab to enhance accuracy and performance.
+  \end{resume_list}
+
+ \headingBf{Online Learning Website}{Feb-2024}
+  \begin{resume_list}
+    \item Designed and developed a responsive e-learning website using HTML, CSS, JavaScript, and Bootstrap.
+    \item Ensured mobile responsiveness and cross-browser compatibility for a seamless user experience.
+    \item Optimized website performance for faster load times and smooth interactions.
+  \end{resume_list}
+  \headingBf{Custom Music Player (Spotify Clone)}{Mar-2024}
+  \begin{resume_list}
+    \item Built a feature-rich music player using HTML, CSS, JavaScript, and Bootstrap.
+    \item Implemented custom song selection and playback controls (play, pause, next, previous).
+    \item Enabled users to play songs in any order for a personalized listening experience.
+    \item Optimized audio playback and UI performance for a smooth user experience.
+  \end{resume_list}
+
+\end{document}
